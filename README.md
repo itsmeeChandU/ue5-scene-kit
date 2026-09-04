@@ -27,7 +27,7 @@ It is not an asset pack, renderer, movie generator, or replacement for Unreal.
 It is a small source library intended to run inside Unreal Editor's embedded
 Python.
 
-## Included in v0.1
+## Included
 
 - strict editor-property writes with before/asked/landed receipts
 - immutable, offline-validatable lens, atmosphere, wind, and Niagara specs
@@ -37,6 +37,8 @@ Python.
 - wind and weather composition without bundled or invented VFX assets
 - explicit opt-in level saving
 - ordinary-Python tests using an Unreal-compatible fake runtime
+- a safe installer for Unreal projects on Windows, Linux, and macOS
+- a reproducible UE 5.4.4 Linux smoke fixture and public evidence
 
 Landscape import, foliage painting, material graph authoring, Sequencer, and
 MRQ orchestration are intentionally outside this first release. See
@@ -59,8 +61,25 @@ the `unreal` module.
 
 ## Use inside Unreal Editor
 
-Make this repository's `src` directory importable by Unreal's Python
-environment, then run a script like:
+Install the package into any Unreal project from a source checkout. The same
+command works on Windows, Linux, and macOS:
+
+```bash
+python scripts/install_into_unreal.py --project /path/to/Project.uproject
+```
+
+It copies the package to `Content/Python/ue5_scene_kit`, where Unreal's Python
+plugin can import it. Re-running an unchanged installation is safe. Updating a
+changed installation requires an explicit `--replace`.
+
+If the package is already installed into your ordinary Python environment,
+the equivalent command is:
+
+```bash
+ue5-scene-kit install --project /path/to/Project.uproject
+```
+
+Then run a script inside Unreal like:
 
 ```python
 from ue5_scene_kit import build_foundation
@@ -94,6 +113,23 @@ UnrealEditor-Cmd /path/to/Project.uproject \
 
 Executable paths and command-line flags vary by platform and engine install.
 This library does not redistribute Unreal Engine.
+
+For the tested Linux setup, container requirements, and live smoke command,
+see [Headless Linux](docs/HEADLESS_LINUX.md).
+
+## Live Unreal Engine proof
+
+<p align="center">
+  <img src="evidence/ue5.4.4-proof.png" alt="UE5 Scene Kit proof scene captured in Unreal Engine 5.4.4 on Linux">
+</p>
+
+This repository's smoke fixture passed in Unreal Engine `5.4.4-35576357+UE5`
+on Linux with an NVIDIA RTX 3090 using Vulkan. It created the atmosphere
+foundation and three cameras, composed a weather preset, saved a non-empty
+level, and captured the scene above using only built-in Unreal meshes and
+repository-authored materials. The machine-readable result is in
+[the smoke receipt](evidence/ue5.4.4-smoke-receipt.json); the exact fixture is
+under [`smoke/`](smoke/README.md).
 
 ## Project-owned Niagara assets
 
@@ -129,9 +165,9 @@ source of truth.
 ## Verification boundary
 
 CI validates the pure-Python models, adapters against a fake Unreal surface,
-lint, and package builds on Python 3.9 and 3.12. This v0.1 package has not yet
-completed a public live-engine compatibility matrix. It is alpha, and that
-boundary is intentional rather than hidden.
+lint, and package builds on Python 3.9 and 3.12. Unreal Engine 5.4.4 on Linux
+has live evidence. Other Unreal versions and platforms have not yet completed
+a public compatibility matrix. The package remains alpha.
 
 ## License and trademark
 

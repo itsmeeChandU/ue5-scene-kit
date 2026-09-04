@@ -1,0 +1,40 @@
+name: Bug report
+description: Report reproducible behavior in UE5 Scene Kit
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for providing a small, reproducible case.
+  - type: input
+    id: engine
+    attributes:
+      label: Unreal Engine version
+      placeholder: 5.4.4
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      placeholder: Windows 11, Ubuntu 22.04, or macOS
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Include the smallest script and exact command that reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Unreal log output
+      render: shell

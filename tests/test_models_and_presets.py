@@ -11,7 +11,7 @@ from ue5_scene_kit.presets import list_presets
 
 
 def test_version_and_discovery_are_stable():
-    assert __version__ == "0.1.0"
+    assert __version__ == "0.2.0"
     presets = list_presets()
     assert "golden_hour" in presets["atmospheres"]
     assert "standard" in presets["lenses"]
@@ -45,4 +45,3 @@ def test_cli_validate_emits_json(capsys):
     assert main(["validate"]) == 0
     result = json.loads(capsys.readouterr().out)
     assert result == {"atmospheres": 6, "lenses": 4, "winds": 4}
-

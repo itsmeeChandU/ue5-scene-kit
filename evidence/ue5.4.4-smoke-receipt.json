@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "camera_focal_lengths_mm": [
+      24.0,
+      50.0,
+      85.0
+    ],
+    "camera_focus_distances_cm": [
+      1513.2745361328125,
+      602.0797119140625,
+      206.15528869628906
+    ],
+    "foundation_actor_count": 9,
+    "foundation_labels": "PASS",
+    "new_level": "PASS",
+    "saved_map_bytes": 36521,
+    "weather_composition": "PASS"
+  },
+  "engine_version": "5.4.4-35576357+UE5",
+  "project": "../../../../../ue5-scene-kit/smoke/SceneKitSmoke.uproject",
+  "schema_version": 1,
+  "status": "PASS"
+}

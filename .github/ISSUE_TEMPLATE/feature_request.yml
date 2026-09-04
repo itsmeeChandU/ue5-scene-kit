@@ -1,0 +1,22 @@
+name: Feature request
+description: Propose a focused scene-construction primitive
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What Unreal editor-automation problem should the library solve?
+    validations:
+      required: true
+  - type: textarea
+    id: interface
+    attributes:
+      label: Suggested interface
+      description: Show the smallest useful Python call if possible.
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Assets and engine versions
+      description: List required project assets and Unreal versions already tested.

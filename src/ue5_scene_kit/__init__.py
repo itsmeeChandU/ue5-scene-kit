@@ -28,5 +28,4 @@ __all__ = [
     "spawn_niagara", "spawn_wind",
 ]
 
-__version__ = "0.1.0"
-
+__version__ = "0.2.0"
